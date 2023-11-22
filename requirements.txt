@@ -1,0 +1,10 @@
+nltk
+numpy
+pip
+scipy
+tk
+tqdm
+json
+typing
+abc
+heapq

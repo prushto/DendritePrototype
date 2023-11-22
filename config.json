@@ -1,0 +1,19 @@
+{
+    "corpus_filepath": "mini_msmarco/full_collection/raw.tsv",
+    "query_filepath": "mini_msmarco/dev_queries/raw.tsv",
+    "labels_filepath": "mini_msmarco/dev_qrel.json",
+    "output_filepath": "evaluation_results.txt",
+    "rank_num": 1000,
+    "routing_network": {
+        "module": "DefaultRoutingNetwork",
+        "class": "DefaultRoutingNetwork"
+    },
+    "scoring_unit": {
+        "module": "DefaultScoringUnit",
+        "class": "DefaultScoringUnit"
+    },
+    "ranking_network": {
+        "module": "DefaultRankingNetwork",
+        "class": "DefaultRankingNetwork"
+    }
+}
