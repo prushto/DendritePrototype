@@ -9,7 +9,7 @@ class DefaultScoringUnit(ScoringUnit):
     to compute dot product between the embedding of every query and document
     in the corpus.
     """
-    def find_most_relevant_documents(self, queries, token_passage_matrix):
+    def score(self, queries, token_passage_matrix):
         if not isinstance(token_passage_matrix, csr_matrix):
             token_passage_matrix = csr_matrix(token_passage_matrix)
 

@@ -51,11 +51,10 @@ class DendritePrototype:
         return recall
 
     def run(self):
-        self.pid_vector, self.vocab, self.token_passage_matrix = self.routing_network.process_corpus(self.corpus)
+        self.pid_vector, self.vocab, self.token_passage_matrix, queries_enc = self.routing_network.process(self.corpus, self.queries)
         print("Total Number of Documents:", len(self.pid_vector))
         print("Vocabulary Size:", len(self.vocab))
-        queries_enc = self.routing_network.process_queries(self.queries, self.vocab)
-        scores_for_all_docs = self.scoring_unit.find_most_relevant_documents(queries_enc, self.token_passage_matrix)
+        scores_for_all_docs = self.scoring_unit.score(queries_enc, self.token_passage_matrix)
         ranked_documents = self.ranking_network.ranker(scores_for_all_docs, self.pid_vector, self.rank_num)
 
         # Evaluation if applicable

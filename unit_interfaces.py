@@ -12,31 +12,23 @@ Adjust the config file to specify which classes you want to use.
 
 class RoutingNetwork(ABC):
     @abstractmethod
-    def process_corpus(self, file_path) -> Tuple[List, Dict, ndarray]:
+    def process(self, corpus_file_path, query_file_path) -> Tuple[List, Dict, ndarray, Dict]:
         """
         Argument:   file_path to document corpus.
+                    file_path to queries.
         Returns:    passage IDs -> List of passage IDs in order of corpus.
                     vocab -> Dict(token: idx) results of tokenization of corpus.
                     token_passage_matrix -> ndarray(rows: token_idx, cols: passages in order of corpus)
                     where 0 means token not present in document, 1 means present.
-        """
-        pass
-
-    @abstractmethod
-    def process_queries(self, file_path, vocab) -> Dict:
-        """
-        Arguments:  file_path to queries.
-                    vocab -> Dict(token: idx) results of tokenization of corpus.
-        Returns:    queries -> Dict(query_id: list[token presence/absence]), where the list_idx corresponds
+                    queries -> Dict(query_id: list[token presence/absence]), where the list_idx corresponds
                     to the vocab, and, as in  the token_passage_matrix above 0 means token not present in
                     document, 1 means present.
         """
         pass
 
-
 class ScoringUnit(ABC):
     @abstractmethod
-    def find_most_relevant_documents(self, queries, token_passage_matrix) -> Dict:
+    def score(self, queries, token_passage_matrix) -> Dict:
         """
         Argument:   queries -> Dict(query_id: list[token presence/absence]), where the list_idx corresponds
                     to the vocab, and, as in  the token_passage_matrix above 0 means token not present in

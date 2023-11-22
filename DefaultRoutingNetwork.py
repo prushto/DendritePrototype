@@ -10,6 +10,13 @@ class DefaultRoutingNetwork(RoutingNetwork):
     Simple ScoringUnit implementation that tokenizes document corpus and queries
     using NLTK's punkt tokenizer models.
     """
+
+    def process(self, corpus_file_path, query_file_path):
+        pid_list, vocab, token_passage_matrix = self.process_corpus(corpus_file_path)
+        queries = self.process_queries(query_file_path, vocab)
+        return pid_list, vocab, token_passage_matrix, queries
+
+
     def process_corpus(self, file_path):
         try:
             # Check if 'punkt' tokenizer models are already downloaded
