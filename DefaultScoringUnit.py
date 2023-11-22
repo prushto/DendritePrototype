@@ -5,7 +5,7 @@ from unit_interfaces import ScoringUnit
 
 class DefaultScoringUnit(ScoringUnit):
     """
-    Simple RoutingNetwork implementation that uses scipy sparse vectors
+    Simple ScoringUnit implementation that uses scipy sparse vectors
     to compute dot product between the embedding of every query and document
     in the corpus.
     """

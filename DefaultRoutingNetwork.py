@@ -7,7 +7,7 @@ from unit_interfaces import RoutingNetwork
 
 class DefaultRoutingNetwork(RoutingNetwork):
     """
-    Simple ScoringUnit implementation that tokenizes document corpus and queries
+    Simple RoutingUnit implementation that tokenizes document corpus and queries
     using NLTK's punkt tokenizer models.
     """
 
